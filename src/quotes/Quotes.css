@@ -1,0 +1,12 @@
+div{
+    text-align: left;
+}
+
+.my-quote{
+    background-color: bisque;
+    border-right: 10px solid #FDCB6E;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+
+}
