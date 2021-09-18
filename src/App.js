@@ -3,6 +3,8 @@ import Quotes from './quotes/Quotes';
 import './App.css';
 import React,{useState} from 'react';
 
+
+
 const defaultQuotes=[{
   quote:" “Watch your thoughts; they become words. Watch your words; they become actions. Watch your actions; they become habits. Watch your habits; they become character. Watch your character; it becomes your destiny.”",
   auther:"Charles",
@@ -28,24 +30,59 @@ const defaultQuotes=[{
 function App() {
   const [quote,setQuote]= useState(defaultQuotes)
   const [name, setName] = useState({})
-  
+  const [error, setError] = useState("")
+
   const onSubmit = (e) => {
     e.preventDefault();
-    setQuote([...quote,name])
-    setName({})
+    
+    if (myValidate()){
+      setQuote([...quote, name])
+      setName({})
+      e.target.reset();
+    }
+    
+    
   }
   const onChange=(e)=>{
    
     setName({ ...name, [e.target.name]: e.target.value})
     console.log(name)
   }
+
+  function myValidate() {
+  
+    if (!name.quote) {
+      setError("Quote can't be empty");
+      return false;
+    }
+
+    if (!name.auther) {
+      setError("Auther can't be empty");
+      return false;
+    }
+    if (!name.publisher) {
+      setError("Publisher can't be empty");
+      return false;
+    }else{
+      setError("");
+       return true;
+       
+    }
+
+   
+  }
   
   return (
     <div className="App">
-      <Form onSubmit={onSubmit} onChange={onChange} name={name}/>
-    <Quotes quote={quote}/>
+        <h1>Create your owner Quotes</h1>
+      <div className="Content">
+        <Form onSubmit={onSubmit} onChange={onChange} name={name} error={error} />
+        <Quotes quote={quote} />
+        
+        </div>
     </div>
   );
+
 }
 
 

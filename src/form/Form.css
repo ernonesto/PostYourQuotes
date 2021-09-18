@@ -3,6 +3,8 @@ form{
     flex-direction: column;
     margin:10px;
     padding: 10px;
+    background-color: bisque;
+    border-radius: 10px;
 }
 
 div{
@@ -20,7 +22,10 @@ button{
 }
 
 label{
-    color: white;
+    color: black;
+}
+.error{
+    color:red;
 }
 
 

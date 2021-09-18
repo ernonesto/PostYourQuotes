@@ -1,9 +1,13 @@
 import './Form.css';
 
-function Form({onChange,onSubmit, name}) {
+function Form({onChange,onSubmit, name, error}) {
    
     return (
+       
         <div className="Form">
+
+                <h3 className="error">{error?error:null} </h3>
+
             <form onSubmit={onSubmit}>
                 <div className="info">
                    <label> Add your quote:</label>
